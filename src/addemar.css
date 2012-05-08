@@ -1,0 +1,99 @@
+#addemarPanel{
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	box-shadow: 0 0 2px #ccc;
+	color: #555;
+	font: normal normal 12px/130% "Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+	left: 0;
+	height: 400px;
+	margin: -200px 0 10px;
+	padding: 10px;
+	position: fixed;
+	top: 50%;
+	width: 350px;
+}
+#addemarPanel fieldset{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+#addemarPanel legend{
+	color: #555;
+	font-weight: bold;
+	margin: 0 0 10px;
+	padding: 0;
+}
+#addemarPanel label{
+	color: #555;
+	display: block;
+	float: left;
+	line-height: 1.4em;
+	margin: 0 5px 0 0;
+	text-indent: 5px;
+	width: 120px;
+}
+#addemarPanel input{
+	display: block;
+	float: left;
+	margin: 0 0 5px;
+}
+#addemarPanel input.text{
+	border: 1px solid #ccc;
+	box-shadow: 0 2px 2px #eee inset;
+	color: #555;
+	height: 1.4em;
+	line-height: 1.4em;
+	padding: 0 5px;
+	width: 190px;
+}
+#addemarPanel input.checkbox{
+	margin: 5px 5px 0 0;
+}
+#addemarPanel br{
+	clear: both;
+	display: block;
+}
+#addemarPanel .pin{
+	background: url(http://monkeymonk.be/addemarjs/src/img/ico-pin.png) no-repeat 0 0;
+	display: block;
+	height: 15px;
+	position: absolute;
+	right: 5px;
+	text-indent: -999em;
+	top: 5px;
+	width: 15px;
+	-webkit-opacity: 0.4;
+	-khtml-opacity: 0.4;
+	-moz-opacity: 0.4;
+	-o-opacity: 0.4;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+	filter: alpha(opacity=40);
+	opacity: 0.4;
+}
+#addemarPanel.pin .pin{
+	-webkit-opacity: 1;
+	-khtml-opacity: 1;
+	-moz-opacity: 1;
+	-o-opacity: 1;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+.hidetag{
+	display: none;
+	position: absolute;
+}
+
+/*
+.highlight .image:hover{
+	border: 2px solid blue!important;
+}
+.highlight .link:hover{
+	border: 2px solid green!important;
+}
+.highlight .textarea:hover{
+	border: 2px solid red!important;
+}
+*/

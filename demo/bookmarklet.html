@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+	<meta charset="UTF-8" />
+	
+	<title>addemar.js - Bookmarklet</title>
+</head>
+<body class="home">
+	<div id="container">
+		<section id="main">
+			<a class="bookmark" href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='http://monkeymonk.be/addemarjs/src/addemar.js';})();" title="Drop me to your bookmarks">Drop me to your bookmarks</a>
+			
+			<form action="#" method="post" accept-charset="utf-8">
+				<fieldset>
+					<label for="book">Source</label>
+					<input id="book" name="book" type="text" value="http://monkeymonk.be/addemarjs/src/addemar.js" />
+					
+					<button type="submit">Change</button>
+				</fieldset>
+			</form>
+		</section>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>
+		jQuery(function(){
+			jQuery('form').submit(function(e){
+				e.preventDefault();
+				jQuery('#book').trigger('change');
+			});
+			jQuery('#book').bind('change', function(){
+				jQuery('.bookmark').attr('href', "javascript:(function(){document.body.appendChild(document.createElement('script')).src='"+$('#book').val()+"';})();");
+			}).trigger('change');
+		});
+	</script>
+</body>
+</html>
