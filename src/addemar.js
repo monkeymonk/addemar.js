@@ -5,8 +5,15 @@
  * @version 0.2b
  * @date 2012-05-01
  */
+var debugMode = true;
+var debug = function(msg){
+	if(!debugMode)	return;
+	if(window.console && window.console.log)	window.console.log(msg);
+	else	alert(msg);
+};
+
 var addemar = {
-	init: function(s){ console.log('init');
+	init: function(s){ debug('init');
 		if(s.loaded)	return;
 		
 		addemar.createPanel.call(this, s);
@@ -14,7 +21,7 @@ var addemar = {
 		s.loaded = true;
 	}, // init
 	
-	createPanel: function(s){ console.log('createPanel');
+	createPanel: function(s){ debug('createPanel');
 		var panelHTML = '<div id="addemarPanel"><form method="post" action="#">'
 			+'<fieldset>'
 				+'<legend>Path to images</legend>'
@@ -67,7 +74,7 @@ var addemar = {
 		}).trigger('change');
 	}, // createPanel
 	
-	swapTag: function(s){ console.log('swapTag');
+	swapTag: function(s){ debug('swapTag');
 		var tag = arguments[1] || jQuery('ADDEMAR');
 		
 		tag.each(function(){
