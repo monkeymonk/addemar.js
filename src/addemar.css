@@ -1,3 +1,11 @@
+/**
+ * @name Addemar.js
+ * @desc Bookmarklet script to help making Template with Addemar
+ * @author Stéphan Zych (monkeymonk.be)
+ * @version 0.2b
+ * @date 2012-05-01
+ * MIT License
+ */
 #addemarPanel{
 	background: #fff;
 	border: 1px solid #ccc;
