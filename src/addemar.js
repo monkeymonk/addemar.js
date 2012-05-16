@@ -4,6 +4,7 @@
  * @author Stéphan Zych (monkeymonk.be)
  * @version 0.2b
  * @date 2012-05-01
+ * MIT License
  */
 var debugMode = false;
 var debug = function(msg){
