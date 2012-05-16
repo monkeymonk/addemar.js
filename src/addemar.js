@@ -5,7 +5,7 @@
  * @version 0.2b
  * @date 2012-05-01
  */
-var debugMode = true;
+var debugMode = false;
 var debug = function(msg){
 	if(!debugMode)	return;
 	if(window.console && window.console.log)	window.console.log(msg);
@@ -65,6 +65,7 @@ var addemar = {
 				$('.atag').remove();
 				$('.hidetag').removeClass('hidetag');
 				s[field] = o.val();
+				addemar.swapTag.call(this, s, jQuery('img'));
 				addemar.swapTag.call(this, s);
 			}else{
 				s.highlight = !!o.attr('checked');
@@ -78,22 +79,24 @@ var addemar = {
 		var tag = arguments[1] || jQuery('ADDEMAR');
 		
 		tag.each(function(){
-			var o = jQuery(this), a = this.attributes;
-						
-			switch(a.type.value){
+			var o = jQuery(this), a = this.attributes, type = (a.type?a.type.value:this.tagName.toLowerCase());
+			//console.log(a);
+			switch(type){
 				case 'textarea':
+				case 'textfield':
 				case 'texteditor':
 				case 'texteditor_full':
 				case 'texteditor_small':
-					var style = o.attr('style'), html = '<div id="' + a.name.value + '" class="' + a.type.value + ' atag">' + o.html() + '</div>';
+					var style = o.attr('style'), html = '<div id="' + a.name.value + '" class="' + type + ' atag">' + o.html() + '</div>';
+					//!\ manage case when image are into texteditor !!
 					break;
 					
 				case 'link':
-				case 'image':
+				case 'image':debug('image');
 					var html = '';
-					if(a.href)	html += '<a id="' + a.name.value + '" class="' + a.type.value + ' atag" href="' + a.href.value + '" title="' + (a.title?a.title.value:'') + '" target="' + (a.target?a.target.value:'') + '" style="' + (a.style?a.style.value:'') + '">';
-					
-					if(a.src)	html += '<img id="' + a.name.value + '" class="' + a.type.value + ' atag" src="' + a.src.value.replace(s.addemarPath, s.localPath) + '" height="' + (a.height?a.height.value:'') + '" width="' + (a.width?a.width.value:'') + '" alt="' + (a.alt?a.alt.value:'') + '" title="' + (a.title?a.title.value:'') + '" style="' + (a.style?a.style.value:'') + '" />';
+					if(a.href)	html += '<a id="' + a.name.value + '" class="' + type + ' atag" href="' + a.href.value + '" title="' + (a.title?a.title.value:'') + '" target="' + (a.target?a.target.value:'') + '" style="' + (a.style?a.style.value:'') + '">';
+					//debug(a.src.value.replace(s.addemarPath, s.localPath));
+					if(a.src)	html += '<img id="' + a.name.value + '" class="' + type + ' atag" src="' + a.src.value.replace(s.addemarPath, s.localPath) + '" height="' + (a.height?a.height.value:'') + '" width="' + (a.width?a.width.value:'') + '" alt="' + (a.alt?a.alt.value:'') + '" title="' + (a.title?a.title.value:'') + '" style="' + (a.style?a.style.value:'') + '" />';
 					else html += o.html();
 					
 					if(a.href)	html += '</a>';
@@ -103,7 +106,10 @@ var addemar = {
 					addemar.swapTag.call(this, s, o.contents().find('ADDEMAR'));
 					var html = '<div id="' + a.name.value + '" class="' + a.type.value + ' atag">' + o.html() + '</div>';
 					break;
-					
+				
+				case 'img':
+					var html = '<img class="' + type + ' atag" src="' + a.src.value.replace(s.addemarPath, s.localPath) + '" height="' + (a.height?a.height.value:'') + '" width="' + (a.width?a.width.value:'') + '" alt="' + (a.alt?a.alt.value:'') + '" title="' + (a.title?a.title.value:'') + '" style="' + (a.style?a.style.value:'') + '" />';
+					break;
 				default:
 			}
 
@@ -115,8 +121,8 @@ var addemar = {
 };
 
 var options = {
-	addemarPath: '<?add_userdata?>/Image/7DEL0420/'
-	, localPath: '_images/'
+	addemarPath: '<?add_userdata?>/Image/7LOT0148/'
+	, localPath: 'images/'
 	, highlight: true
 	
 	, panelCSS: 'http://monkeymonk.be/addemarjs/src/addemar.css'
